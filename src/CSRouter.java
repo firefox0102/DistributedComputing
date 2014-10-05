@@ -7,6 +7,7 @@ public class CSRouter
     {
         String inputString;
         String responseString;
+        String request;
         System.out.println("BEGINNING POLL");
         ServerSocket listenerPort = new ServerSocket(6768);
         while(true) {
@@ -17,6 +18,7 @@ public class CSRouter
                     new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
             //Reads the string fromt the client-buffer-reader
             inputString = inFromClient.readLine();
+            request = inFromClient.readLine();
             System.out.println("RECIEVED: " + inputString);
 
             //Go to the lookup Server table
@@ -39,7 +41,7 @@ public class CSRouter
             System.out.println("DEBUG 4");
             Socket receivingClientSocket = new Socket ("localhost", receivingClientPort);
             DataOutputStream outToReceivingClient = new DataOutputStream(receivingClientSocket.getOutputStream());
-            outToReceivingClient.writeBytes(inputString + "\n");
+            outToReceivingClient.writeBytes(request + "\n");
 
             outToReceivingClient.close();
             //outToSendingClient.writeInt(receivingClientPort);

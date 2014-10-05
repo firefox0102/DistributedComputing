@@ -22,19 +22,22 @@ class Client
 
             System.out.println("PORT ::" + port);
             //2. Get the name of the receiving client
-            System.out.println("Input the receiverName this client will run on");
+            System.out.println("Input the Recieving Clients name");
             receiverName = System.console().readLine();
+            System.out.println("clientName :: " + receiverName);
 
             //3. Get the message that will be sent to the receiving client
             System.out.println("Input the message");
             //BufferedReader inFromUser = new BufferedReader( new InputStreamReader(System.in));
             //message = inFromUser.readLine();
             message = System.console().readLine();
+            System.out.println("message :: " + message);
 
             Socket CSRouterSocket = new Socket("localhost", 6768);
             DataOutputStream outToCSRouter = new DataOutputStream(CSRouterSocket.getOutputStream());
             System.out.println("SENDING TO CSROUTER");
             outToCSRouter.writeBytes(receiverName + "\n");
+            outToCSRouter.writeBytes(message + "\n");
             //BufferedReader inFromCSRouter = new BufferedReader(new InputStreamReader(CSRouterSocket.getInputStream()));
             //response = inFromCSRouter.readLine();
             //System.out.println("RESPONSE RECIEVED!" + response);
