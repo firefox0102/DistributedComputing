@@ -9,10 +9,8 @@ class Server
         String inputString;
         String responseString;
         ServerSocket listenerPort = new ServerSocket(6769);
-        TreeMap<String, Integer> ServerTable = new TreeMap<String, Integer>();
-        ServerTable.put("client1", 6767);
-        ServerTable.put("client2", 6790);
-        ServerTable.put("client3", 6799);
+        TreeMap<String, String> ServerTable = new TreeMap<String, String>();
+        ServerTable.put("audio1", "/Users/peterfinn/Downloads/badfeeling.wav");
 
         while(true) {
             System.out.println("DEBUG 1");
