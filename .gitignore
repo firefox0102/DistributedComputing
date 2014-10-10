@@ -1,0 +1,10 @@
+
+src/.idea/.name
+
+src/.idea/compiler.xml
+
+*.class
+
+src/DistributedComputing.iml
+
+*.xml
