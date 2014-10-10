@@ -1,6 +1,6 @@
 var http = require('http')
   , fs = require('fs')
-  , indexHtml = fs.readFileSync('./public/index.html')
+  , indexHtml = fs.readFileSync('index.html')
   , BinaryServer = require('binaryjs').BinaryServer
   , binaryServer = BinaryServer({port: 9000});
 
