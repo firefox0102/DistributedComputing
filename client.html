@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://code.jquery.com/jquery-2.1.1.js">
+	</script>
+</head>
+<body>
+	<input type="text" id="file" placeholder='file' size="40" ><br>
+	<input type="text" id="routerIP" placeholder='router IP' size="40"><br>
+	<input type="button" id="btn"value= "Submit">
+	<br>
+	<video controls> 
+
+	</video>
+	<script>
+		(function (document){
+		var file = document.querySelector("#file");
+		var ip = document.querySelector("#routerIP");
+		$('btn').click(function(){
+			var ext = file.val();
+			var url = ip.val();
+			var port = "3000";
+			if(url == ''){
+				url = "127.0.0.1";
+			}
+			var vid = document.querySelector("video");
+			vid.src = url + ':' + port + '/' + ext;
+			console.log(vid.src);
+		});
+
+	})(document);
+	</script>
+</body>
+</html>
+<!--
+  CREATE A FORM TO GET VIDNAME AND IP
+  IF no IP, DEFAULT TO LOCAL
+  ELSE, USE IP FOR ROUTER ON OTHER COMPUTER
+  OUTER ALLWAY PORT 3000
+
+
+
+
+
+
+	-->
