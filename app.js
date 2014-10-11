@@ -20,7 +20,7 @@ server.listen(4000);
 binaryServer.on('connection', function(client) {
 
   client.on('stream', function(stream) {
-
+      console.log("got something")
       var responseStream = client.createStream('fromserver');
       stream.pipe(responseStream);
 
