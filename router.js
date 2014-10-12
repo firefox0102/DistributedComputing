@@ -2,11 +2,10 @@
 
 //MAP FOR LOOKUO
 var map = {
-	video1: 9000,
-	VidLeft: 9001,
-	VidRight: 9002,
-  badFeeling: 9003,
-  gameLab: 9004
+	badfeeling: 9001,
+	gamelab: 9002,
+  leftvid: 9003,
+  stupid: 9004
 }
 
 
