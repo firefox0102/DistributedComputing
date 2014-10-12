@@ -5,7 +5,7 @@
 var http = require('http'),
     fs = require('fs'),
     util = require('util'),
-    ip = '127.0.0.1';
+    ip = '192.168.1.7';
  
 http.createServer(function (req, res) {
   var path = 'vids/badfeeling.wav';
