@@ -10,12 +10,11 @@
 	<input type="text" id="routerIP" placeholder='router IP' size="40"><br>
 	<input type="button" id="btn"value= "Submit">
 	<br>
-	<video controls> 
+	<video width="480" controls> 
 
 	</video>
-	<script>
+	 <script>
 		
-	
 		$('#btn').click(function(){
 				var file = document.querySelector("#file");
 		var ip = document.querySelector("#routerIP");
@@ -26,12 +25,12 @@
 				url = "127.0.0.1";
 			}
 			var vid = document.querySelector("video");
-			vid.src = url + ':' + port + '/' + ext;
+			vid.src = 'http://' + url + ':' + port + '/' + ext;
 			console.log(vid.src);
 		});
 
 	
-	</script>
+	 </script>
 </body>
 </html>
 <!--
