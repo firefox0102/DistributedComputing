@@ -5,6 +5,7 @@ var map = {
 	badfeeling: 9001,
 	gamelab: 9002,
   leftvid: 9003,
+  welcomehome: 9004,
   stupid: 9004
 }
 var timeDif = function(start, end){
@@ -22,7 +23,7 @@ var endTranTime;
 var startTranTime;
 var endlooTime;
 var startlookTime;
-
+var url = "127.0.0.1";
 
 //CREATS A PORT OF THE ROUTE TO RUN ON
 http.createServer(function (req, res) {
@@ -31,7 +32,7 @@ http.createServer(function (req, res) {
   var vidName = req.url;
   vidName = vidName.slice(1);
 
-  var url = "192.168.1.7";
+  
 
   options = {
     host: url,
@@ -79,7 +80,7 @@ http.createServer(function (req, res) {
     console.log('ERROR: ' + e);
   });
 
-}).listen(3000, '192.168.1.7')
+}).listen(3000, url)
 
 
 
