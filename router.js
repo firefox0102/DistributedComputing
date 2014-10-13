@@ -1,3 +1,5 @@
+
+
 //MAP FOR LOOKUO
 var map = {
 	badfeeling: 9001,
@@ -45,9 +47,24 @@ http.createServer(function (req, res) {
   //SEND REQUEST TO THE SERVER WITH THE VIDEO 
   var temp = http.get(options, function(response) {
     startTranTime = new Date();
-    
+    //console.log('STATUS: ' + response.statusCode);
+    //console.log('HEADERS: ' + JSON.stringify(response.headers));
+
+    // Buffer the body entirely for processing as a whole.
+    // var bodyChunks = [];
+    // response.on('data', function(chunk) {
+    //   // You can process streamed parts here...
+    //   bodyChunks.push(chunk);
+    // }).on('end', function() {
+    //   var body = Buffer.concat(bodyChunks);
+    //   console.log('BODY: ' + body);
+    //   // ...and/or process the entire body here.
+    // })
   	response.pipe(res);
 
+  });
+   temp.on('error', function(e) {
+    console.log('ERROR: ' + e);
   });
   res.on('finish', function(){
      endTranTime = new Date();
@@ -56,9 +73,14 @@ http.createServer(function (req, res) {
 
   });
 
-  temp.on('error', function(e) {
-    console.log('ERROR: ' + e);
-  });
+  // temp.on('finish', function(){
+  //   endTranTime = new Date();
+  //   var dif = timeDif(startTranTime, endTranTime)
+  //   console.log("the dif is: " + dif);
+
+  // });
+
+ 
 
 }).listen(3000, url)
 
