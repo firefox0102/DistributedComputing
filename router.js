@@ -23,7 +23,7 @@ var endTranTime;
 var startTranTime;
 var endlooTime;
 var startlookTime;
-var url = "192.168.1.7";
+var url = "127.0.0.1";
 
 //CREATS A PORT OF THE ROUTE TO RUN ON
 http.createServer(function (req, res) {
@@ -41,14 +41,14 @@ http.createServer(function (req, res) {
   };
   endlooTime = new Date();
 
-  //console.log("look tim is: " + timeDif(startlookTime, endlooTime));
-  //console.log(options);
+  console.log("look tim is: " + timeDif(startlookTime, endlooTime));
+  console.log(options);
 
   //SEND REQUEST TO THE SERVER WITH THE VIDEO 
   var temp = http.get(options, function(response) {
     startTranTime = new Date();
-    //console.log('STATUS: ' + response.statusCode);
-    //console.log('HEADERS: ' + JSON.stringify(response.headers));
+    console.log('STATUS: ' + response.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(response.headers));
 
     // Buffer the body entirely for processing as a whole.
     // var bodyChunks = [];
@@ -63,14 +63,10 @@ http.createServer(function (req, res) {
   	response.pipe(res);
 
   });
-   temp.on('error', function(e) {
-    console.log('ERROR: ' + e);
-  });
   res.on('finish', function(){
      endTranTime = new Date();
     var dif = timeDif(startTranTime, endTranTime)
-    console.log(dif + ",");
-
+    console.log("the dif is: " + dif);
   });
 
   // temp.on('finish', function(){
@@ -80,7 +76,9 @@ http.createServer(function (req, res) {
 
   // });
 
- 
+  temp.on('error', function(e) {
+    console.log('ERROR: ' + e);
+  });
 
 }).listen(3000, url)
 
