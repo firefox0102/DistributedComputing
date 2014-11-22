@@ -15,29 +15,29 @@ http.createServer(function (req, res) {
     console.log('ALL: ' + total);
     res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
     fs.createReadStream(path).pipe(res);
-  }
+  
 }).listen(9001, ip);
 
 http.createServer(function (req, res) {
-  var path = 'vids/gamelab.mp4';
+  var path = 'vids/leftvid.mp4';
   var stat = fs.statSync(path);
   var total = stat.size;
   
     console.log('ALL: ' + total);
     res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
     fs.createReadStream(path).pipe(res);
-  }
+  
 }).listen(9002, ip);
 
 http.createServer(function (req, res) {
-  var path = 'vids/leftvid.mp4';
+  var path = 'vids/vidleft.mp4';
   var stat = fs.statSync(path);
   var total = stat.size;
 
     console.log('ALL: ' + total);
     res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
     fs.createReadStream(path).pipe(res);
-  }
+  
 }).listen(9003, ip);
 
 http.createServer(function (req, res) {
@@ -48,7 +48,7 @@ http.createServer(function (req, res) {
     console.log('ALL: ' + total);
     res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
     fs.createReadStream(path).pipe(res);
-  }
+  
 }).listen(9004, ip);
 
 console.log('client-server running at...http://'+ip);
