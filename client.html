@@ -14,19 +14,29 @@
 
 	</video>
 	 <script>
+
+	 	
 		
 		$('#btn1').click(function(){
-				var file = document.querySelector("#file");
-		var ip = document.querySelector("#routerIP");
-			var ext = file.value;
-			var url = ip.value;
-			var port = "3000";
-			if(url == ''){
-				url = "127.0.0.1";
-			}
-			var vid = document.querySelector("video");
-			vid.src = 'http://' + url + ':' + port + '/' + ext;
-			console.log(vid.src);
+
+			$.ajax({
+				type: "GET",
+		  url: "http://127.0.0.1:3001/?name=badfeeling",
+		  dataType: 'jsonp',
+		}).done(function(data) {
+		  console.log(JSON.parse(data));
+		});
+		// 		var file = document.querySelector("#file");
+		// var ip = document.querySelector("#routerIP");
+		// 	var ext = file.value;
+		// 	var url = ip.value;
+		// 	var port = "3000";
+		// 	if(url == ''){
+		// 		url = "127.0.0.1";
+		// 	}
+		// 	var vid = document.querySelector("video");
+		// 	vid.src = 'http://' + url + ':' + port + '/' + ext;
+		// 	console.log(vid.src);
 		});
 
 	 </script>

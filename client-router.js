@@ -1,13 +1,7 @@
 
 
 //MAP FOR LOOKUO
-var map = {
-	badfeeling: 9001,
-	gamelab: 9002,
-  leftvid: 9003,
-  welcomehome: 9004,
-  stupid: 9004
-}
+
 var timeDif = function(start, end){
   return end - start;
 }
@@ -36,8 +30,9 @@ http.createServer(function (req, res) {
 
   options = {
     host: url,
-    port: map[vidName],
-    path: ""
+    port: 3000,
+    path: "/?name="+vidName,
+    method: "GET"
   };
   endlooTime = new Date();
 
@@ -47,8 +42,9 @@ http.createServer(function (req, res) {
   //SEND REQUEST TO THE SERVER WITH THE VIDEO 
   var temp = http.get(options, function(response) {
     startTranTime = new Date();
-    console.log('STATUS: ' + response.statusCode);
-    console.log('HEADERS: ' + JSON.stringify(response.headers));
+    
+    console.log(response.body);
+
 
     // Buffer the body entirely for processing as a whole.
     // var bodyChunks = [];
@@ -60,7 +56,8 @@ http.createServer(function (req, res) {
     //   console.log('BODY: ' + body);
     //   // ...and/or process the entire body here.
     // })
-  	response.pipe(res);
+  	res.write(""+response);
+    res.end();
 
   });
   res.on('finish', function(){
@@ -80,7 +77,7 @@ http.createServer(function (req, res) {
     console.log('ERROR: ' + e);
   });
 
-}).listen(3000, url)
+}).listen(3001, url)
 
 
 

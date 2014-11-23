@@ -1,5 +1,3 @@
-
-
 //MAP FOR LOOKUO
 var map = {
 	badfeeling: 9001,
@@ -27,47 +25,34 @@ var url = "127.0.0.1";
 
 //CREATS A PORT OF THE ROUTE TO RUN ON
 http.createServer(function (req, res) {
+   res.writeHead(200, {"Content-Type": "application/json"});
   startlookTime = new Date();
- 
+ console.log(req);
+ console.log(req.url + "is req.url");
   var vidName = req.url;
-  vidName = vidName.slice(1);
+  console.log(vidName + "is vifname");
 
+  vidName = vidName.slice(1);
+  console.log(vidName + " is vifname after");
+
+
+
+  var obj = {vidName: vidName, port: map[vidName]}
+  res.write(JSON.stringify(obj));
+  console.log(res)
+res.end();
   
 
-  options = {
-    host: url,
-    port: map[vidName],
-    path: ""
-  };
+  
   endlooTime = new Date();
 
   console.log("look tim is: " + timeDif(startlookTime, endlooTime));
-  console.log(options);
+  
 
-  //SEND REQUEST TO THE SERVER WITH THE VIDEO 
-  var temp = http.get(options, function(response) {
-    startTranTime = new Date();
-    console.log('STATUS: ' + response.statusCode);
-    console.log('HEADERS: ' + JSON.stringify(response.headers));
+  	
 
-    // Buffer the body entirely for processing as a whole.
-    // var bodyChunks = [];
-    // response.on('data', function(chunk) {
-    //   // You can process streamed parts here...
-    //   bodyChunks.push(chunk);
-    // }).on('end', function() {
-    //   var body = Buffer.concat(bodyChunks);
-    //   console.log('BODY: ' + body);
-    //   // ...and/or process the entire body here.
-    // })
-  	response.pipe(res);
+ 
 
-  });
-  res.on('finish', function(){
-     endTranTime = new Date();
-    var dif = timeDif(startTranTime, endTranTime)
-    console.log("the dif is: " + dif);
-  });
 
   // temp.on('finish', function(){
   //   endTranTime = new Date();
@@ -76,11 +61,9 @@ http.createServer(function (req, res) {
 
   // });
 
-  temp.on('error', function(e) {
-    console.log('ERROR: ' + e);
-  });
 
-}).listen(3000, url)
+
+}).listen(3001, url)
 
 
 
