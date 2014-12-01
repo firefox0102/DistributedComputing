@@ -18,7 +18,7 @@ app.get('/', function(req, res){
 	var query = url_parts.query;
 	console.log(query);
 	var port = map[query.name];
-	var obj = port
+	var obj = port;
   res.send(JSON.stringify(obj));
 });
 

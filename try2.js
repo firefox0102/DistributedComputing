@@ -3,7 +3,13 @@ var app = express();
 var url = require('url');
 var http = require('http');
 require('json-response');
-var U = "127.0.0.1"
+var U = "127.0.0.1";
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/', function(req, res){
  
@@ -31,7 +37,8 @@ app.get('/', function(req, res){
    	console.log(chunk);
    	//var obj = JSON.parse(chunk);
 
-   	res.send(chunk);
+   	res.ok({foo: chunk}, 'hello world');
+      //JSON.stringify(chunk));
 
    });
    
